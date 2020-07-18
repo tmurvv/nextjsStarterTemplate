@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "startdev": "next -p 3006",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "next": "9.4.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-uuid": "^1.0.2",
+    "uuid": "^8.2.0"
   }
 }
