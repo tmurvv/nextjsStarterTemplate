@@ -4,7 +4,7 @@ import axios from 'axios';
 import uuid from 'react-uuid';
 
 // internal
-import ContactUsFormCSS from '../styles/ContactUsForm.css';
+import ContactUsFormCSS from '../styles/contactusform.css';
 import { resultInfoReducer } from '../reducers/reducers';
 
 const resultInfoInitialState = {

@@ -5,7 +5,7 @@ import Head from 'next/head';
 // internal
 import PageTitle from '../src/components/PageTitle';
 import ContactUsForm from '../src/components/ContactUsForm';
-import ContactCSS from '../src/styles/Contact.css';
+import ContactCSS from '../src/styles/contact.css';
 
 function Contact() {
     return (

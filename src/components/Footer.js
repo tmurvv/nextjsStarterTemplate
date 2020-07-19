@@ -1,7 +1,7 @@
 import React from 'react';
 import { branding } from '../constants/branding';
 import { cssVariables } from '../constants/cssVariables';
-import FooterCss from '../styles/Footer.css';
+import FooterCss from '../styles/footer.css';
 
 function Footer() {
     return (
