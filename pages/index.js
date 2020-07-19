@@ -3,10 +3,9 @@ import IndexCss from '../src/styles/index.css';
 import { branding } from '../src/constants/branding';
 import Head from "next/head";
 
-export default function Home() {
+const Home = (props) => {
     return (
-        <>
-            
+        <>   
             <div className='index'>
                 <PageTitle maintitle={ branding.tabTitle } subtitle='Great Stuff to Come' />
                 <IndexCss />
@@ -14,3 +13,5 @@ export default function Home() {
         </>
     )
 }
+
+export default Home

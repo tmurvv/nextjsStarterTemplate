@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "startdev": "next -p 3000",
+    "startdev": "next -p 3006",
     "build": "next build",
     "start": "next start -p $PORT"
   },
