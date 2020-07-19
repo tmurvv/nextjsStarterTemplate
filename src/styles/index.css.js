@@ -7,7 +7,7 @@ function IndexCss() {
             .index {
                 background-image: linear-gradient(to bottom, ${cssVariables.primaryColourWhite}, #ffffff 300px);
                 margin: 0;
-                padding-top: 70px;
+                padding: 70px 30px 30px;
                 height: 100vh;
             }
             .index h2 {

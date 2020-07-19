@@ -40,7 +40,7 @@ export default function NavBar(props) {
                         <a onClick={props.handleNavOpen}>Starter Template</a>
                     </Link>
                     <Link href='/Page1' as='/Page1'>
-                        <a onClick={props.handleNavOpen}>Page One</a>
+                        <a onClick={props.handleNavOpen}>Harps for Sale</a>
                     </Link>
                     <Link href='/Page2' as='/Page2'>
                         <a onClick={props.handleNavOpen}>Page Two</a>
