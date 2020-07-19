@@ -16,7 +16,7 @@ const resultInfoInitialState = {
     resultImg: 'none'
 }
 
-function ContactUsForm(props) {
+function ContactUsForm() {
     const [resultInfo, dispatchResultInfo] = useReducer(resultInfoReducer, resultInfoInitialState);
     const [user, setUser] = useState({
         firstname: '',
@@ -26,7 +26,6 @@ function ContactUsForm(props) {
         newsletter: false,
         change: false
     });
-    const [openStoreOwnerInq, setOpenStoreOwnerInq] = useState(false);
     const handleChange = (evt) => {
         switch (evt.target.name) {
             case 'firstname': 
@@ -58,13 +57,8 @@ function ContactUsForm(props) {
         });
     }
     const handleSubmit = async (evt) => {
-        // {if (!user.change || user.change && confirm('Email not sent. Changes will be lost. Clear contact form?')) clearForm();}
         evt.preventDefault();
-        // const resultContainer = document.querySelector('#loadingLogin');
         const resultText = document.querySelector('#loadingLoginText');
-        // const resultButton = document.querySelector('#loadingLoginOk');
-        // const resultButtonTryAgain = document.querySelector('#loadingLoginTryAgain');
-        // const resultImg = document.querySelector('#loadingLoginImg');
         
         if (!user.contactemail) {
             resultText.innerText = "Email is required";
@@ -85,7 +79,6 @@ function ContactUsForm(props) {
         try {
             // send contactUs inq
             const res = await axios.post(`${process.env.backend}/api/v1/contactform`, contact);
-            console.log('here', res.data)
             resultText.innerText=`Contact form has been sent to findaharp.com.`;
             dispatchResultInfo({type: 'OK'});
         } catch(e) {
@@ -196,8 +189,7 @@ function ContactUsForm(props) {
                     </div>         
                 </form>
                 </div>   
-        </div>
-            
+        </div> 
         <ContactUsFormCSS />
         </>
     )

@@ -47,23 +47,15 @@ function MyApp(props) {
     }
     return( 
         <>  
-            {/* <Head>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-                <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" data-api-key="NjgzYTM5MDUtNTQwYy00YmJmLThlMjMtNTExNTViYjAyZGQyNjM3MzA3MDM0MDE0NTM1ODY1" id="snipcart"></script>
-                <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
-                <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.css" />
-            </Head> */}
             <Banner />
-            
             {/* Without Auth */}
             <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
             <Component {...pageProps} />
             <Footer />
             <AppCss />
             
-            
-            {/* With Auth
-            <UserContext.Provider value={{user, setUser}}>
+            {/* With Auth */}
+            {/* <UserContext.Provider value={{user, setUser}}>
             {props.router.query.reset
                 ?<ResetPassword />
                 :props.router.query.activateemail
@@ -79,7 +71,7 @@ function MyApp(props) {
             <AppCss />
             <div hidden id="snipcart" data-api-key="NjgzYTM5MDUtNTQwYy00YmJmLThlMjMtNTExNTViYjAyZGQyNjM3MzA3MDM0MDE0NTM1ODY1"></div>
             <script src="https://cdn.snipcart.com/themes/v3.0.17/default/snipcart.js"></script> 
-            */}
+             */}
         </>
     )
 }

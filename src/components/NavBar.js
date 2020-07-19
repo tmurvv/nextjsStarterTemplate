@@ -39,7 +39,7 @@ export default function NavBar(props) {
                     <Link href='/'>
                         <a onClick={props.handleNavOpen}>Starter Template</a>
                     </Link>
-                    <Link href='/Page1' as='/Page1'>
+                    <Link href='/Store' as='/Store'>
                         <a onClick={props.handleNavOpen}>Harps for Sale</a>
                     </Link>
                     <Link href='/Page2' as='/Page2'>

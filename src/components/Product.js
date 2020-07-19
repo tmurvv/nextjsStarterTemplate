@@ -1,24 +1,11 @@
-import {withRouter, RouterProps} from 'next/router'
+import {withRouter} from 'next/router'
 
-// export interface IProduct {
-//     id: string
-//     name: string
-//     price: number
-//     url: string  
-//     description: string
-//     image: string
-// }
-// interface IProductProps {
-//     product: IProduct
-//     router: RouterProps
-// }
 const Product = (props) => {
-    console.log(props)
     return (
-        <div className="product">
+        <div className="product" style={{margin: '7.5px'}}>
             <h2 className="product__title">{props.product.name}</h2>
             <p className="product__description">{props.product.description}</p>
-            <img src={props.product.image} alt={props.product.name} className="product__image"/>
+            <img height='400px' src={props.product.image} alt={props.product.name} className="product__image"/>
             <div className="product__price-button-container">
                 <div className="product__price">${props.product.price.toFixed(2)}</div>
                 <button 
@@ -34,50 +21,5 @@ const Product = (props) => {
         </div>
     )
 }
+
 export default withRouter(Product)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import Router from 'next/router';
-// // import BannerCss from '../styles/banner.css';
- 
-// function Product(props) {
-//     return (
-//         <div style={{flexDirection: 'column'}}>
-//             <div className="product">
-//                 <img height='400px' className="harpImage" src={props.image} alt={props.imagealt}/>
-//                 <p>{props.title}</p>
-//                 <p>{props.price}</p>
-//             </div>
-//             <button className="snipcart-add-item product__button"
-//                 data-item-id={props.title}
-//                 data-item-price={props.price}
-//                 data-item-url={Router.pathname}
-//                 data-item-description={props.description}
-//                 data-item-image={props.image}
-//                 data-item-name={props.title}>
-//             Add to cart
-//             </button>
-//         </div>
-//     )
-// }
-
-// export default Product;
