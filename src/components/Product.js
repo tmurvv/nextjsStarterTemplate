@@ -9,7 +9,7 @@ const Product = (props) => {
             <div className="product__price-button-container">
                 <div className="product__price">${props.product.price.toFixed(2)}</div>
                 <button 
-                    className="snipcart-add-item product__button"
+                    className="product__button"
                     data-item-id={props.product.id}
                     data-item-name={props.product.name}
                     data-item-price={props.product.price}

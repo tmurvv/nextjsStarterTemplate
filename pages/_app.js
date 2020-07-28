@@ -1,9 +1,11 @@
 // import App from 'next/app'
 import Head from 'next/head';
 import React, {useState, useEffect} from 'react';
+import uuid from 'react-uuid';
 // import * as gtag from '../lib/gtag'
 
 // internal
+import {CartContext} from "../src/contexts/CartContext";
 import AppCss from '../src/styles/app.css.js';
 import Banner from '../src/components/Banner';
 import NavBar from '../src/components/NavBar';
@@ -15,11 +17,29 @@ import { branding } from '../src/constants/branding.js';
 // import ResetPassword from '../src/components/ResetPassword';
 //#endregion
 
+const testCart = [
+    {
+        id: uuid(), 
+        description: "A Quiet Afternoon CD", 
+        price: 15.00, 
+        product_image: "img/QuietAfternoon.webp",
+        product_quantity: '1'
+    },
+    {
+        id: uuid(), 
+        description: "Come Just As You Are CD", 
+        price: 15.00, 
+        product_image: "img/ComeJustAs.webp", 
+        product_quantity: '1'
+    }
+];
+
 function MyApp(props) {
     const { Component, pageProps } = props;
     // const [user, setUser] = useState(['Login', '', '', 'miles']); // firstname, lastname, email, distanceunit
     const [windowWidth, setWindowWidth] = useState(0);
     const [navOpen, setNavOpen] = useState(false);
+    const [cart, setCart] = useState(testCart);
     
     // Google Analytics
     // useEffect(() => {
@@ -49,10 +69,12 @@ function MyApp(props) {
         <>  
             <Banner />
             {/* Without Auth */}
-            <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
-            <Component {...pageProps} />
-            <Footer />
-            <AppCss />
+            <CartContext.Provider value={{cart, setCart}}>
+                <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
+                <Component {...pageProps} />
+                <Footer />
+                <AppCss />
+            </CartContext.Provider>
             
             {/* With Auth */}
             {/* <UserContext.Provider value={{user, setUser}}>

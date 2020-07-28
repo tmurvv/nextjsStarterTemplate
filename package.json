@@ -1,21 +1,21 @@
 {
-  "name": "harptisha",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "startdev": "next -p 3006",
-    "build": "next build",
-    "start": "next start -p $PORT"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "next": "9.4.4",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-uuid": "^1.0.2",
-    "uuid": "^8.2.0"
-  },
-  "engines": {
-    "node": "^10"
-  }
+    "name": "harptisha",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "startdev": "next -p 3006",
+        "build": "next build",
+        "start": "next start -p $PORT"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "next": "9.4.4",
+        "react": "16.13.1",
+        "react-dom": "16.13.1",
+        "react-uuid": "^1.0.2",
+        "uuid": "^8.2.0"
+    },
+    "engines": {
+        "node": "^10"
+    }
 }
