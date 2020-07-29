@@ -16,7 +16,6 @@ const Store = (props) => {
         <Head>
             
         </Head>
-        <Cart />
         <div className='index' style={{height: 'fit-content'}}>
             <PageTitle maintitle='Harps for Sale' subtitle='A selection of beautiful harps for you' />
             <div className="product-list" style={{display: 'flex', flexWrap: 'wrap', padding: '50px'}}>

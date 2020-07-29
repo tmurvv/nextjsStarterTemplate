@@ -7,15 +7,15 @@ function CartCss() {
         body, ul, h1, h2, h3, form, input, li { margin: 0; padding: 0 }
 
         body {
-            background-color: rgba(0,0,0,.2);
-            font-family: helvetica;
+            background-image: linear-gradient(to bottom, ${cssVariables.primaryColourWhite}, #ffffff 300px);
         }
         
         #cart {
             margin: 75px auto;
+            display: flex;
             width: fit-content;
-            height: 600px;
             background-color: #fff;
+            border: 1px lightgrey solid;
             box-shadow: 2px 2px 2px rgba(0,0,0,.3);
         }
         
@@ -168,11 +168,11 @@ function CartCss() {
                     
                     .quantity_button {
                         margin: 33px auto;
-                height: 26px;
-                width: 71px;
-                text-align: center;
-                padding: 2px;
-                background-color: #ECF0F1;
+                        height: 26px;
+                        width: 71px;
+                        text-align: center;
+                        padding: 2px;
+                        background-color: #ECF0F1;
                     }
                     
                 .how_many {

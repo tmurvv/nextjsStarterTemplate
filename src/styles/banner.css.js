@@ -21,6 +21,8 @@ function BannerCss() {
             }
             .banner {
                 height: 100%;
+                width: unset;
+                margin: 0;
             }
             @media only screen and (max-width: 550px) {
                 .textLogo {

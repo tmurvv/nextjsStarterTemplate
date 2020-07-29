@@ -6,9 +6,12 @@ import uuid from 'react-uuid';
 
 // internal
 import {CartContext} from "../src/contexts/CartContext";
+import {UserContext} from "../src/contexts/UserContext";
+import {CartOpenContext} from "../src/contexts/CartOpenContext";
 import AppCss from '../src/styles/app.css.js';
 import Banner from '../src/components/Banner';
 import NavBar from '../src/components/NavBar';
+import Cart from '../src/components/Cart';
 import Footer from '../src/components/Footer';
 import { branding } from '../src/constants/branding.js';
 //#region For Auth
@@ -17,7 +20,8 @@ import { branding } from '../src/constants/branding.js';
 // import ResetPassword from '../src/components/ResetPassword';
 //#endregion
 
-const testCart = [
+const cartOpenInit = false;
+const cartInit = [
     {
         id: uuid(), 
         description: "A Quiet Afternoon CD", 
@@ -33,13 +37,28 @@ const testCart = [
         product_quantity: '1'
     }
 ];
+const userInit = {
+    id: '',
+    fname: '',
+    lname: '',
+    email: '',
+    phone: '',
+    address: '',
+    address2: '',
+    city: '',
+    state_prov: '',
+    zip_postal: '',
+    country: '',
+    shippingDifferent: ''
+}
 
 function MyApp(props) {
     const { Component, pageProps } = props;
-    // const [user, setUser] = useState(['Login', '', '', 'miles']); // firstname, lastname, email, distanceunit
     const [windowWidth, setWindowWidth] = useState(0);
     const [navOpen, setNavOpen] = useState(false);
-    const [cart, setCart] = useState(testCart);
+    const [cart, setCart] = useState(cartInit);
+    const [user, setUser] = useState(userInit);
+    const [cartOpen, setCartOpen] = useState(cartOpenInit);
     
     // Google Analytics
     // useEffect(() => {
@@ -69,12 +88,17 @@ function MyApp(props) {
         <>  
             <Banner />
             {/* Without Auth */}
-            <CartContext.Provider value={{cart, setCart}}>
-                <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
-                <Component {...pageProps} />
-                <Footer />
-                <AppCss />
-            </CartContext.Provider>
+            <UserContext.Provider value={{user, setUser}}>
+                <CartOpenContext.Provider value={{cartOpen, setCartOpen}}>
+                    <CartContext.Provider value={{cart, setCart}}>
+                        <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
+                        <Cart cartopen={cartOpen}/>
+                        <Component {...pageProps} />
+                        <Footer />
+                        <AppCss />
+                    </CartContext.Provider>
+                </CartOpenContext.Provider>
+            </UserContext.Provider>
             
             {/* With Auth */}
             {/* <UserContext.Provider value={{user, setUser}}>

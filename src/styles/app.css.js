@@ -1,4 +1,5 @@
 import React from 'react';
+import { cssVariables } from '../constants/cssVariables';
 
 function AppCss() {
     return (
@@ -180,6 +181,15 @@ function AppCss() {
                 border: none; 
                 font-size: 14px;
                 font-style: italic;
+            }
+            .primaryButton {
+                background-color: ${cssVariables.primaryColour};
+                color: white;
+                font-size: 14px;
+                padding: 5px 10px;
+                border-radius: 3px;
+                margin: 25px;
+                cursor: pointer;
             }
         `}
         </style>
