@@ -22,11 +22,11 @@ function CartCss() {
         .items {
             float: left;
             width: fit-content;
+            min-width: 300px;
             margin: 0 5px;
             height: 100%;
             padding-left: 15px;
             padding-top: 15px;
-            
         }
         
         .subTotal {
@@ -44,7 +44,6 @@ function CartCss() {
             margin: 5px 0;
             font-size: 24px;
             color: #2C3E50;
-        
         }
         
         .subTotal h1 {
@@ -136,14 +135,14 @@ function CartCss() {
                     }
                     
                     .description h2 {
-                        font-size: 12px; 
+                        font-size: 14px; 
                         color: #2c3e50;
                         margin: 5px 0;
                     }
                     
                     .description h3 {
                         display: inline-block;
-                        font-size: 10px; 
+                        font-size: 12px; 
                         height: 20px; 
                         line-height: 20px; 
                         width: 100px;  
@@ -193,22 +192,32 @@ function CartCss() {
                 
                 .add {
                     line-height: 13px;
-              width: 100%;
-              font-size: 10px;
-              color: #1ABC9C;
-              text-align: center;
-              font-weight: bold;
+                    width: 100%;
+                    font-size: 10px;
+                    color: #1ABC9C;
+                    text-align: center;
+                    font-weight: bold;
+                    cursor: pointer;
                 }
                 
                 .sub {
                     line-height: 13px;
-              font-size: 12px;
-              color: #E74C3C;
-              text-align: center;
-              width: 100%;
-              font-weight: bold;
+                    font-size: 14px;
+                    color: #E74C3C;
+                    text-align: center;
+                    width: 100%;
+                    font-weight: bold;
+                    cursor: pointer;
                 }
-                
+                .redFontButton {
+                    background-color: 'white';
+                    outline: 'none';
+                    color:'tomato';
+                    text-decoration: 'underline'; 
+                    border: 'none'; 
+                    font-size: '12px';
+                    font-style: 'italic';
+                }
                 .price { 
                     float: left;
                     width: 100px;

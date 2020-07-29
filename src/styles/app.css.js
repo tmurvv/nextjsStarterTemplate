@@ -172,13 +172,14 @@ function AppCss() {
             .marginRight {
                 margin-right: 15px;
             }
-            .blueFontButton {
-                background-color: 'white';
-                outline: 'none';
-                color:'#6A75AA';
-                text-decoration: 'none'; 
-                border: 'none'; 
-                font-size: '14px';
+            .redFontButton {
+                background-color: white;
+                outline: none;
+                color: tomato;
+                text-decoration: none; 
+                border: none; 
+                font-size: 14px;
+                font-style: italic;
             }
         `}
         </style>
