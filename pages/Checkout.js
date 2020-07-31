@@ -1,20 +1,15 @@
 import React, { useState, useContext } from 'react';
-import uuid from 'react-uuid';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
-import SalesTax from 'sales-tax-cad';
-import { branding } from '../src/constants/branding';
-import { cssVariables } from '../src/constants/cssVariables';
 import CheckoutCss from '../src/styles/checkout.css';
-import Cart from '../src/components/Cart'
 import { CartContext } from '../src/contexts/CartContext';
 import { UserContext } from '../src/contexts/UserContext';
-import {
-    getNumItems,
-    getSubTotal,
-    incQty,
-    decQty,
-    deleteItem
-} from '../src/utils/helpers';
+import { 
+    selectCountry,
+    selectRegion,
+    shipping,
+    tax,
+    getTotal
+} from '../src/utils/checkoutHelpers';
 
 function Checkout() {
     const { cart, setCart } = useContext(CartContext);
@@ -78,77 +73,21 @@ function Checkout() {
             default :
         }
     }
-    function selectCountry(val) {
-        setUser({...user, country: val});
-    }
-    function getProvCode(prov) {
-        switch (prov) {
-            case "Prince Edward Island":
-                return "PE";
-            case "Nova Scotia":
-                return "NS";
-            case "New Brunswick":
-                return "NB";
-            case "Quebec":
-                return "QC";
-            case "Newfoundland and Labrador":
-                return "NL";
-            case "Ontario":
-                return "ON";
-            case "Manitoba":
-                return "MB";
-            case "Saskatchewan":
-                return "SK";
-            case "Alberta":
-                return "AB";
-            case "British Columbia":
-                return "BC";
-            case "Yukon":
-                return "YN";
-            case "Northwest Territories":
-                return "NT";
-            case "Nunavut":
-                return "NU";
-            default:
-        }
-    }
-    function shipping() {
-        if (!user.country) return 'select country';
-        switch (user.country) {
-            case 'Canada':
-                return 8.00;
-            case 'United States':
-                return 12.00;
-            case 'select country':
-                return 'select country'
-            default:
-                return 15.00;
-        }
-    }
-    function tax() {
-        console.log(user.state_prov)
-        console.log(cart)
-        console.log(getSubTotal(cart))
-        try {
-            const tax = new SalesTax(
-                // getProvCode(user.state_prov),
-                "YK",
-                getSubTotal(cart),
-                2
-            );
-            return tax.sum().toFixed(2);
-        } catch(e) {
-            return 'select region';
-        }       
-    }
-    function getTotal() {
-        console.log(user)
-        console.log(getSubTotal(cart), user.country, user.state_prov)
-        if (!user.country || !user.state_prov || getSubTotal(cart) === 0) return '---.--';
-        return (Number(getSubTotal(cart)) + Number(shipping()) + Number(tax())).toFixed(2);
-    }
-    function selectRegion(val) {
-        setUser({...user, state_prov: val});
+    function handleSubmit(e) {
+        e.preventDefault();
+        const lineItems = [];
+        cart.map(cartItem => {
+            const item = {
+                name: cartItem.description,
+                description: '',
+                images: [cartItem.product_image],
+                amount: Number(cartItem.price),
+                currency: "usd",
+                quantity: Number(cartItem.product_quantity)
+            }
+            lineItems.push(item);
+            console.log(lineItems)
+        })   
     }
     return (
         <>
@@ -162,7 +101,7 @@ function Checkout() {
                         <div className="col-7 col">
                             <h3 className="topborder"><span>Shipping Details</span></h3>
                             <div className="width50 padright">
-                                <label for="fname">First Name</label>
+                                <label htmlFor="fname">First Name</label>
                                 <input type="text" name="fname" value={user.fname} onChange={handleChange} id="fname" required />
                             </div>
                             <div className="width50">
@@ -179,13 +118,13 @@ function Checkout() {
                                     <CountryDropdown
                                         value={user.country}
                                         name='country'
-                                        onChange={(val) => selectCountry(val)} 
+                                        onChange={(val) => selectCountry(val, user, setUser)} 
                                     />
                                     <RegionDropdown
                                         country={user.country}
                                         value={user.state_prov}
                                         name='state_prov'
-                                        onChange={(val) => selectRegion(val)} 
+                                        onChange={(val) => selectRegion(val, user, setUser)} 
                                     />
                                 </div>
                             </div>
@@ -228,24 +167,24 @@ function Checkout() {
                             </div>
                             <div className="flexSB">
                                 <div className="shipping" style={{color:"black",border: 'none',paddingBottom:'-10px'}}>Shipping</div>
-                                <div style={{textAlign:'right',color: 'black',border: 'none',paddingBottom:'-10px'}}>{parseFloat(shipping()).toFixed(2)}</div>
+                                <div style={{textAlign:'right',color: 'black',border: 'none',paddingBottom:'-10px'}}>{parseFloat(shipping(user)).toFixed(2)}</div>
                             </div>
                             <div className="flexSB">
                                 <div style={{color:"black",border: 'none',paddingBottom:'-10px'}}>Taxes</div>
-                                <div style={{textAlign:'right', color: 'black',border: 'none',paddingBottom:'-10px'}}>{tax()}</div>
+                                <div style={{textAlign:'right', color: 'black',border: 'none',paddingBottom:'-10px'}}>{tax(cart, user)}</div>
                             </div>
                             <div className="flexSB">
                                 <div style={{color:"black"}}>ORDER TOTAL</div>
-                                <div style={{textAlign:'right', color: 'black'}}>${getTotal()}</div>
+                                <div style={{textAlign:'right', color: 'black'}}>${getTotal(cart,user)}</div>
                             </div>
                             <div>
                                 <h3 className="topborder"><span>Payment Method</span></h3>
                                 <input type="radio" value="creditcard" name="payment" onChange={handleChange}checked /><p>Credit Card <span style={{fontStyle: 'italic', fontSize: '12px'}}>(powered by Stripe)</span></p>
                                 <div className="paymenttypes">
-                                    <img src="img/mastercard.png" alt="Visa, Mastercard, Discover and Amex Credit Cards" className="cards" />
-                                    <img src="img/visa.png" alt="Visa, Mastercard, Discover and Amex Credit Cards" className="cards" />
-                                    <img src="img/discover.jpg" alt="Visa, Mastercard, Discover and Amex Credit Cards" className="cards" />
-                                    <img src="img/americanexpress.png" alt="Visa, Mastercard, Discover and Amex Credit Cards" className="cards" />
+                                    <img src="img/mastercard.png" alt="Mastercard Logo" className="cards" />
+                                    <img src="img/visa.png" alt="Visa Logo" className="cards" />
+                                    <img src="img/discover.jpg" alt="Discover Logo" className="cards" />
+                                    <img src="img/americanexpress.png" alt="American Express Logo" className="cards" />
                                 </div>
                             </div>
                             <div>
@@ -254,7 +193,7 @@ function Checkout() {
                                     <legend><img id='paypallogo' src="img/paypal.png" alt="PayPal Logo" className="paypal" /></legend>
                                 </div>
                             </div>
-                            <input type="submit" name="submit" value="Place Order" className="redbutton" />
+                            <button type="button" name="submit" onClick={(e) => handleSubmit(e)} value="Place Order" className="redbutton">Place Order</button>
                         </div>
                         <CheckoutCss />
                     </form>

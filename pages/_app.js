@@ -73,6 +73,9 @@ function MyApp(props) {
     }
     return( 
         <>  
+            <Head>
+                <script src="https://js.stripe.com/v3/" />
+            </Head>
             <Banner />
             {/* Without Auth */}
             <UserContext.Provider value={{user, setUser}}>
