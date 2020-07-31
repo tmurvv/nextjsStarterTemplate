@@ -184,10 +184,10 @@ function CheckoutCss() {
         
         
         /* Grid Styles */
-        *
-        {
-            box-sizing: border-box;
-        }
+        // *
+        // {
+        //     box-sizing: border-box;
+        // }
         
         .wrapper
         {
@@ -506,7 +506,16 @@ function CheckoutCss() {
         {
             color: #000;
         }
-        
+        th, td {
+            padding: 5px;
+        }
+        th {
+            border: 1px double ${cssVariables.primaryColour};
+            font-weight: 600;
+        }
+        td {
+            border: 1px solid ${cssVariables.primaryColour};
+        }
         .info-bar
         {
             height: 56px;
@@ -524,6 +533,7 @@ function CheckoutCss() {
             border: 12px solid #f5f5f5;
             padding: 30px;
             margin-top: 28px;
+            background-color: #fff
         }
         
         .order div:not(.qty)
@@ -533,6 +543,9 @@ function CheckoutCss() {
             padding: 20px 0;
         }
         
+        .shipping {
+            
+        }
         .order a
         {
             display: block;

@@ -9,16 +9,14 @@ export function getSubTotal(cart) {
     return amt;
 }
 export function decQty(e, cart, setCart) {
-    const updateItemId = e.target.getAttribute('dataid');
     let tempCart = [...cart]
-    const idx = tempCart.findIndex(item => item.id===updateItemId);
+    const idx = tempCart.findIndex(item => item.description===e.target.getAttribute('data-item-name'));
     tempCart[idx].product_quantity = parseInt(tempCart[idx].product_quantity)-1;
     setCart(tempCart);
 }
 export function incQty(e, cart, setCart) {
-    const updateItemId = e.target.getAttribute('dataid');
     let tempCart = [...cart]
-    const idx = tempCart.findIndex(item => item.id===updateItemId);
+    const idx = tempCart.findIndex(item => item.description===e.target.getAttribute('data-item-name'));
     tempCart[idx].product_quantity = parseInt(tempCart[idx].product_quantity)+1;
     setCart(tempCart);
 }

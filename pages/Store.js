@@ -5,19 +5,14 @@ import Head from 'next/head';
 // internal
 import Product from '../src/components/Product';
 import PageTitle from '../src/components/PageTitle';
-import Cart from '../src/components/Cart';
 import IndexCss from '../src/styles/index.css';
 
 
 const Store = (props) => {
-    
     return (
         <>
-        <Head>
-            
-        </Head>
         <div className='index' style={{height: 'fit-content'}}>
-            <PageTitle maintitle='Harps for Sale' subtitle='A selection of beautiful harps for you' />
+            <PageTitle maintitle="Store" subtitle='A selection of beautiful items for you' />
             <div className="product-list" style={{display: 'flex', flexWrap: 'wrap', padding: '50px'}}>
                 {props.products_cds.map((product, index) => <Product product={product} key={index}/>)}
             </div>

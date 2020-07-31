@@ -53,6 +53,7 @@ function AppCss() {
                 margin-block-start: 0 !important;
                 font-family: avenir;
                 color: #5c5b5b;
+                background-color: ${cssVariables.primaryColourWhite};
             }
             h2 {
                 margin-block-end:0;
@@ -188,8 +189,8 @@ function AppCss() {
                 font-size: 14px;
                 padding: 5px 10px;
                 border-radius: 3px;
-                margin: 25px;
                 cursor: pointer;
+                border-color: lightgrey;
             }
         `}
         </style>

@@ -23,8 +23,8 @@ function Cart(props) {
     return (
         <>
            <div id='cart'>
-                <img src='img/close.png' style={{width: '25px', height: '25px', margin: '10px'}} alt='close window' onClick={()=>setCartOpen(false)} />
-                <div classNanme='items'>
+                <img src='img/close.png' style={{width: '15px', height: '15px', margin: '10px'}} alt='close window' onClick={()=>setCartOpen(false)} />
+                <div className='items'>
                 <h1>Shopping Cart</h1>
                     <ul>
                         {cart.length===0?
@@ -48,8 +48,8 @@ function Cart(props) {
                                         <div className='quantity_button'>
                                             <div className='how_many'>{item.product_quantity}</div>
                                             <div className='add_sub'>
-                                                <div className='add' onClick={(e) => incQty(e, cart, setCart)} dataid={item.id}>+</div>
-                                                <div className='sub' onClick={(e) => decQty(e, cart, setCart)} dataid={item.id}>-</div>
+                                                <div className='add' onClick={(e) => incQty(e, cart, setCart)} data-item-name={item.description}>+</div>
+                                                <div className='sub' onClick={(e) => decQty(e, cart, setCart)} data-item-name={item.description}>-</div>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +65,11 @@ function Cart(props) {
                     <h3>${getSubTotal(cart).toFixed(2)}</h3>
                     <h4>Shipping and Tax <br/> calculated at checkout. </h4>
                     
-                    <button className='primaryButton' onClick={()=>{setCartOpen(false);Router.push('/Checkout');}}>
+                    <button 
+                        className='primaryButton'
+                        style={{marginBottom: '25px'}}
+                        onClick={()=>{setCartOpen(false);Router.push('/Checkout');}}
+                    >
                         Checkout
                     </button>
                     <form>
@@ -76,7 +80,17 @@ function Cart(props) {
             </div>
             </>)
         } else {
-            return (<button className='primaryButton' onClick={()=>setCartOpen(true)}>View Cart</button>)
+            return (
+                <>
+                <button 
+                    className='primaryButton cartButton'
+                    onClick={()=>setCartOpen(true)}
+                >
+                    View Cart
+                </button>
+                <CartCss />
+                </>
+                )
         }         
 }
 

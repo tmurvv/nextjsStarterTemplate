@@ -21,22 +21,7 @@ import { branding } from '../src/constants/branding.js';
 //#endregion
 
 const cartOpenInit = false;
-const cartInit = [
-    {
-        id: uuid(), 
-        description: "A Quiet Afternoon CD", 
-        price: 15.00, 
-        product_image: "img/QuietAfternoon.webp",
-        product_quantity: '1'
-    },
-    {
-        id: uuid(), 
-        description: "Come Just As You Are CD", 
-        price: 15.00, 
-        product_image: "img/ComeJustAs.webp", 
-        product_quantity: '1'
-    }
-];
+const cartInit = [];
 const userInit = {
     id: '',
     fname: '',
@@ -49,7 +34,9 @@ const userInit = {
     state_prov: '',
     zip_postal: '',
     country: '',
-    shippingDifferent: ''
+    region: '',
+    shippingDifferent: '',
+    paymentType: ''
 }
 
 function MyApp(props) {

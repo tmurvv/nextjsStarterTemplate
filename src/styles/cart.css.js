@@ -5,11 +5,7 @@ function CartCss() {
     return (
         <style jsx="true">{`
         body, ul, h1, h2, h3, form, input, li { margin: 0; padding: 0 }
-
-        body {
-            background-image: linear-gradient(to bottom, ${cssVariables.primaryColourWhite}, #ffffff 300px);
-        }
-        
+       
         #cart {
             margin: 75px auto;
             display: flex;
@@ -17,6 +13,11 @@ function CartCss() {
             background-color: #fff;
             border: 1px lightgrey solid;
             box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
         }
         
         .items {
@@ -38,6 +39,7 @@ function CartCss() {
             text-align: center;
             padding-right: 15px;
             padding-top: 15px;
+            padding-bottom: 15px;
         }
         
         .items h1 {
@@ -90,6 +92,10 @@ function CartCss() {
         input[type=checkbox] {
             margin-right: 5px;
         }
+        .cartButton {
+            float: right;
+            color: orange;
+        }
         
         /*********************************************/
         
@@ -107,7 +113,7 @@ function CartCss() {
                     }
                     
                      img { 
-                         display: block;
+                        display: block;
                         border: 0; 
                         padding: 0; 
                         margin: 0 auto; 
