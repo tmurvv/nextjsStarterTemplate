@@ -1,4 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import fetch from "isomorphic-unfetch";
+import Router from 'next/router';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import CheckoutCss from '../src/styles/checkout.css';
 import { CartContext } from '../src/contexts/CartContext';
@@ -11,10 +13,11 @@ import {
     getTotal
 } from '../src/utils/checkoutHelpers';
 
-function Checkout() {
+function Checkout(props) {
     const { cart, setCart } = useContext(CartContext);
     const { user, setUser } = useContext(UserContext);
     const [ change, setChange ]  = useState(false);
+    // const [stripe, setStripe] = useState(null);
 
     const handleChange = (evt) => {
         switch (evt.target.name) {
@@ -73,22 +76,36 @@ function Checkout() {
             default :
         }
     }
-    function handleSubmit(e) {
-        e.preventDefault();
-        const lineItems = [];
-        cart.map(cartItem => {
-            const item = {
-                name: cartItem.description,
-                description: '',
-                images: [cartItem.product_image],
-                amount: Number(cartItem.price),
-                currency: "usd",
-                quantity: Number(cartItem.product_quantity)
-            }
-            lineItems.push(item);
-            console.log(lineItems)
-        })   
-    }
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     const lineItems = [];
+    //     cart.map(cartItem => {
+    //         const item = {
+    //             name: cartItem.description,
+    //             description: '',
+    //             images: [cartItem.product_image],
+    //             amount: Number(cartItem.price),
+    //             currency: "usd",
+    //             quantity: Number(cartItem.product_quantity)
+    //         }
+    //         lineItems.push(item);
+    //         console.log(lineItems)
+    //     })   
+    // }
+    // useEffect(
+    //     () => setStripe(window.Stripe(process.env.STRIPE_PUBLISHABLE_KEY)),
+    //     []
+    // );
+    const handleSubmit = () => {
+        Router.push(`/tempCheckout?amt=7000`)
+    //     stripe
+    //       .redirectToCheckout({
+    //         sessionId: props.sessionId
+    //       })
+    //       .then(function(result) {
+    //         console.log(result.error.message);
+    //       });
+      };
     return (
         <>
             <header>
@@ -177,7 +194,7 @@ function Checkout() {
                                 <div style={{color:"black"}}>ORDER TOTAL</div>
                                 <div style={{textAlign:'right', color: 'black'}}>${getTotal(cart,user)}</div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <h3 className="topborder"><span>Payment Method</span></h3>
                                 <input type="radio" value="creditcard" name="payment" onChange={handleChange}checked /><p>Credit Card <span style={{fontStyle: 'italic', fontSize: '12px'}}>(powered by Stripe)</span></p>
                                 <div className="paymenttypes">
@@ -192,8 +209,8 @@ function Checkout() {
                                 <div className='paymenttypes'>
                                     <legend><img id='paypallogo' src="img/paypal.png" alt="PayPal Logo" className="paypal" /></legend>
                                 </div>
-                            </div>
-                            <button type="button" name="submit" onClick={(e) => handleSubmit(e)} value="Place Order" className="redbutton">Place Order</button>
+                            </div> */}
+                            <button type="button" name="submit" onClick={handleSubmit} value="Place Order" className="redbutton">Place Order</button>
                         </div>
                         <CheckoutCss />
                     </form>
@@ -205,6 +222,16 @@ function Checkout() {
 }
 
 export default Checkout;
+
+Checkout.getInitialProps = async function({ req }) {
+    const res = await fetch(`http://localhost:3006/api/build-checkout`);
+    const data = await res.json();
+  
+    return {
+      sessionId: data.id
+    };
+};
+
 
 // EXTRA CODE
 //#region ASK FOR ACCOUNT

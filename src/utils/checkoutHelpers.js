@@ -49,7 +49,6 @@ export function shipping(user) {
     }
 }
 export function tax(cart, user) {
-    console.log('here', getSubTotal(cart))
     try {
         const tax = new SalesTax(
             // getProvCode(user.state_prov),
