@@ -94,192 +94,190 @@ function CartCss() {
         }
         .cartButton {
             float: right;
-            color: orange;
+            width: fit-content;
         }
         
         /*********************************************/
         
-                    ul { margin: 0; padding: 0 }
-                
-                    ul li { 
-                        list-style-type: none; 
-                    }
-                
-                    .item { 
-                        width: 660px; 
-                        height: 100px;
-                        margin: 10px auto;
-                        text-align: left;
-                    }
-                    
-                     img { 
-                        display: block;
-                        border: 0; 
-                        padding: 0; 
-                        margin: 0 auto; 
-                        margin-top: 10px; 
-                        width: 75px; 
-                        height: 80px; 
-                    }
-                    
-                    .product_image { 
-                        float: left;
-                        width: 100px;
-                    }
-                    
-                    .description { 
-                        float: left; 
-                        padding-left: 5px; 
-                        float: left; 
-                        width: 300px;
-                        height: 100px;
-                    }
-                    
-                    .description h1 {
-                        font-size: 14px; 
-                        color: #e74c3c
-                    }
-                    
-                    .description h2 {
-                        font-size: 14px; 
-                        color: #2c3e50;
-                        margin: 5px 0;
-                    }
-                    
-                    .description h3 {
-                        display: inline-block;
-                        font-size: 12px; 
-                        height: 20px; 
-                        line-height: 20px; 
-                        width: 100px;  
-                        text-align: center;
-                        margin: 15px 0;
-                    }
-                    
-                    .description h3.delete {
-                        background-color: #c0392b;
-                        color: #fff;
-                    }
-                    
-                    .description h3.save {
-                        background-color: #1ABC9C;
-                        color: #fff;
-                    }
-                    
-                    .product_quantity {
-                        float: left; 
-                        width: 100px; 
-                        height: 100px
-                    }
-                    
-                    .quantity_button {
-                        margin: 33px auto;
-                        height: 26px;
-                        width: 71px;
-                        text-align: center;
-                        padding: 2px;
-                        background-color: #ECF0F1;
-                    }
-                    
-                .how_many {
-                    width: 46px;
-              float: left;
-              height: 26px;
-              line-height: 30px;
-              font-size: 1.25em;
-              background-color: #fff;
-              color: #7F8C8D;
-                }
-                
-                .add_sub {
-                    float: left;
-              width: 25px;
-                }
-                
-                .add {
-                    line-height: 13px;
-                    width: 100%;
-                    font-size: 10px;
-                    color: #1ABC9C;
-                    text-align: center;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-                
-                .sub {
-                    line-height: 13px;
-                    font-size: 14px;
-                    color: #E74C3C;
-                    text-align: center;
-                    width: 100%;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-                .redFontButton {
-                    background-color: 'white';
-                    outline: 'none';
-                    color:'tomato';
-                    text-decoration: 'underline'; 
-                    border: 'none'; 
-                    font-size: '12px';
-                    font-style: 'italic';
-                }
-                .price { 
-                    float: left;
-                    width: 100px;
-                    text-align: center;
-                    line-height: 100px;
-                    font-size: 1.5em;
-                    color: #2C3E50
-                }
+        ul { margin: 0; padding: 0 }
+    
+        ul li { 
+            list-style-type: none; 
+        }
+    
+        .item { 
+            width: 660px; 
+            height: 100px;
+            margin: 10px auto;
+            text-align: left;
+        }
+        
+            img { 
+            display: block;
+            border: 0; 
+            padding: 0; 
+            margin: 0 auto; 
+            margin-top: 10px; 
+            width: 75px; 
+            height: 80px; 
+        }
+        
+        .product_image { 
+            float: left;
+            width: 100px;
+        }
+        
+        .description { 
+            float: left; 
+            padding-left: 5px; 
+            float: left; 
+            width: 300px;
+            height: 100px;
+        }
+        
+        .description h1 {
+            font-size: 14px; 
+            color: #e74c3c
+        }
+        
+        .description h2 {
+            font-size: 14px; 
+            color: #2c3e50;
+            margin: 5px 0;
+        }
+        
+        .description h3 {
+            display: inline-block;
+            font-size: 12px; 
+            height: 20px; 
+            line-height: 20px; 
+            width: 100px;  
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .description h3.delete {
+            background-color: #c0392b;
+            color: #fff;
+        }
+        
+        .description h3.save {
+            background-color: #1ABC9C;
+            color: #fff;
+        }
+        
+        .product_quantity {
+            float: left; 
+            width: 100px; 
+            height: 100px
+        }
+        
+        .quantity_button {
+            margin: 33px auto;
+            height: 26px;
+            width: 71px;
+            text-align: center;
+            padding: 2px;
+            background-color: #ECF0F1;
+        }
+        
+        .how_many {
+            width: 46px;
+            float: left;
+            height: 26px;
+            line-height: 30px;
+            font-size: 1.25em;
+            background-color: #fff;
+            color: #7F8C8D;
+        }
+        
+        .add_sub {
+            float: left;
+            width: 25px;
+        }
+            
+        .add {
+            line-height: 13px;
+            width: 100%;
+            font-size: 10px;
+            color: #1ABC9C;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        } 
+        .sub {
+            line-height: 13px;
+            font-size: 14px;
+            color: #E74C3C;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .redFontButton {
+            background-color: 'white';
+            outline: 'none';
+            color:'tomato';
+            text-decoration: 'underline'; 
+            border: 'none'; 
+            font-size: '12px';
+            font-style: 'italic';
+        }
+        .price { 
+            float: left;
+            width: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 1.5em;
+            color: #2C3E50
+        }
         /********************************/
         
         .save ul { margin: 0; padding: 0; display: inline;}
                 
-                    .save ul li { 
-                        list-style-type: none; 
-                    }
-                
-                    .saved_item { 
-                        
-                        float: left;
-                        width: 100px; 
-                        height: 130px;
-                        margin: 10px 5px;
-                    }
-                    
-                     .img { 
-                         display: block;
-                        border: 0; 
-                        padding: 0; 
-                        margin: 0 auto; 
-                        margin-top: 10px; 
-                        width: 75px; 
-                        height: 80px; 
-                    }
-                    
-                    .product_image { 
-                        float: left;
-                        width: 100px;
-                        height: 100px;
-                    }
-                    
-                    .add_cart {
-                        height: 30px;
-                        line-height: 16px;
-                        font-size: 12px;
-                        text-align: center;
-                        width: 100%;
-                        color: #16A085;
-                        font-weight: bold;
-                    }
-                    
-                    .save {
-                        width: 660px;
-                        height: 150px;
-                    
-                        margin: 0 auto;
-                    }
+        .save ul li { 
+            list-style-type: none; 
+        }
+    
+        .saved_item { 
+            
+            float: left;
+            width: 100px; 
+            height: 130px;
+            margin: 10px 5px;
+        }
+        
+        .img { 
+            display: block;
+            border: 0; 
+            padding: 0; 
+            margin: 0 auto; 
+            margin-top: 10px; 
+            width: 75px; 
+            height: 80px; 
+        }
+        
+        .product_image { 
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .add_cart {
+            height: 30px;
+            line-height: 16px;
+            font-size: 12px;
+            text-align: center;
+            width: 100%;
+            color: #16A085;
+            font-weight: bold;
+        }
+        
+        .save {
+            width: 660px;
+            height: 150px;
+            margin: 0 auto;
+        }
         
         `}
         </style>

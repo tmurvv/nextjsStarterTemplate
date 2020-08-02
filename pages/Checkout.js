@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import fetch from "isomorphic-unfetch";
+// import fetch from "isomorphic-unfetch";
 import Router from 'next/router';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import CheckoutCss from '../src/styles/checkout.css';
@@ -97,7 +97,7 @@ function Checkout(props) {
     //     []
     // );
     const handleSubmit = () => {
-        Router.push(`/tempCheckout?amt=7000`)
+        Router.push(`/checkoutform`)
     //     stripe
     //       .redirectToCheckout({
     //         sessionId: props.sessionId
@@ -223,14 +223,14 @@ function Checkout(props) {
 
 export default Checkout;
 
-Checkout.getInitialProps = async function({ req }) {
-    const res = await fetch(`http://localhost:3006/api/build-checkout`);
-    const data = await res.json();
+// Checkout.getInitialProps = async function({ req }) {
+//     // const res = await fetch(`http://localhost:3006/api/build-checkout`);
+//     const data = await res.json();
   
-    return {
-      sessionId: data.id
-    };
-};
+//     return {
+//       sessionId: data.id
+//     };
+// };
 
 
 // EXTRA CODE

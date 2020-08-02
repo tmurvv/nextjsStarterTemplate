@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
+import { CartContext } from '../src/contexts/CartContext';
+import { UserContext } from '../src/contexts/UserContext';
 import {
     CardElement,
     useStripe,
     useElements
 } from "@stripe/react-stripe-js";
+import { getTotal } from "../src/utils/checkoutHelpers";
 
 export default function CheckoutForm() {
+    const { cart, setCart } = useContext(CartContext);
+    const { user, setUser } = useContext(UserContext);
     const [succeeded, setSucceeded] = useState(false);
     const [error, setError] = useState(null);
     const [processing, setProcessing] = useState('');
@@ -16,12 +22,13 @@ export default function CheckoutForm() {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         window
-        .fetch("http://localhost:3000/api/v1/create-stripe-payment-intent", {
+        .fetch(`http://localhost:3000/api/v1/create-stripe-payment-intent?amt:8000`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
+            // body: JSON.stringify({items: [{ id: "xl-tshirt" }]}) // Format for listing all stripe items
+            body: JSON.stringify({"total": getTotal(cart, user)*100})
         })
         .then(res => {
             console.log('here', res.json)
@@ -76,7 +83,7 @@ export default function CheckoutForm() {
     };
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
-            <h3>Total: $4000.00usd</h3>
+            <h3>Total: {getTotal(cart, user)}</h3>
         <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
         <button
             disabled={processing || disabled || succeeded}

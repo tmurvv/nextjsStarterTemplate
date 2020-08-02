@@ -1,6 +1,8 @@
 // import App from 'next/app'
 import Head from 'next/head';
 import React, {useState, useEffect} from 'react';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import uuid from 'react-uuid';
 // import * as gtag from '../lib/gtag'
 
@@ -20,6 +22,7 @@ import { branding } from '../src/constants/branding.js';
 // import ResetPassword from '../src/components/ResetPassword';
 //#endregion
 
+const promise = loadStripe("pk_test_51H9CjyEmELhumIsBlNuKNzJwXDcJn8x0yiGbWTxKfnRDvT7UyQxKQtIMqJnDAEw7KWdeqCVv2QDzpPhdZ2IqIa1i006AHbvVXt");
 const cartOpenInit = false;
 const cartInit = [];
 const userInit = {
@@ -83,7 +86,9 @@ function MyApp(props) {
                     <CartContext.Provider value={{cart, setCart}}>
                         <NavBar mobile={windowWidth<=550} open={navOpen} handleNavOpen={handleNavOpen}/>
                         <Cart cartopen={cartOpen}/>
-                        <Component {...pageProps} />
+                        <Elements stripe={promise}>
+                            <Component {...pageProps} />
+                        </Elements>
                         <Footer />
                         <AppCss />
                     </CartContext.Provider>
