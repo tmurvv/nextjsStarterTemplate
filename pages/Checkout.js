@@ -223,15 +223,6 @@ function Checkout(props) {
 
 export default Checkout;
 
-// Checkout.getInitialProps = async function({ req }) {
-//     // const res = await fetch(`http://localhost:3006/api/build-checkout`);
-//     const data = await res.json();
-  
-//     return {
-//       sessionId: data.id
-//     };
-// };
-
 
 // EXTRA CODE
 //#region ASK FOR ACCOUNT

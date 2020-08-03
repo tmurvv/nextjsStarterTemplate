@@ -22,7 +22,7 @@ import { branding } from '../src/constants/branding.js';
 // import ResetPassword from '../src/components/ResetPassword';
 //#endregion
 
-const promise = loadStripe("pk_test_51H9CjyEmELhumIsBlNuKNzJwXDcJn8x0yiGbWTxKfnRDvT7UyQxKQtIMqJnDAEw7KWdeqCVv2QDzpPhdZ2IqIa1i006AHbvVXt");
+const promise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 const cartOpenInit = false;
 const cartInit = [];
 const userInit = {

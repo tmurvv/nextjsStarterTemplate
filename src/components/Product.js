@@ -5,12 +5,18 @@ import {
     incQty
 } from '../utils/helpers';
 import { CartContext } from '../contexts/CartContext';
+import ProductCss from '../styles/product.css';
 
 
 const Product = (props) => {
     const { cart, setCart } = useContext(CartContext);
     
-    function handleAdd(e) {
+    function handleAdd(e) {  
+        // a trick to restart animation courtesy Chris Coyier. Does not work in strict mode
+        e.target.classList.remove("flyToCart");
+        void e.target.offsetWidth;
+        e.target.classList.add("flyToCart");
+        // update cart
         if (cart.findIndex(item=>item.description===e.target.getAttribute('data-item-name'))>-1) {
             incQty(e, cart, setCart);
         } else {
@@ -27,17 +33,16 @@ const Product = (props) => {
         }
     }
     return (
-        <div className="product" style={{margin: '7.5px'}}>
+        <div className="product">
             <h2 className="product__title">{props.product.name}</h2>
             <p className="product__description">{props.product.description}</p>
             <img 
                 src={props.product.image} 
                 alt={props.product.name} 
                 className="product__image"
-                style={{height: '400px', width: 'unset', marginLeft: '0'}}
             />
             <div className="product__price-button-container">
-                <div className="product__price" style={{marginTop: '10px'}}>${props.product.price.toFixed(2)}</div>
+                <div className="product__price">${props.product.price.toFixed(2)}</div>
                 <button 
                     className="primaryButton"
                     style={{marginTop: '0px', marginBottom: '25px'}}
@@ -51,6 +56,7 @@ const Product = (props) => {
                     Add to cart
                 </button>
             </div>
+            <ProductCss />
         </div>
     )
 }

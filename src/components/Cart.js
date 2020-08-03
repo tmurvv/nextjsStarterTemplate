@@ -82,12 +82,26 @@ function Cart(props) {
         } else {
             return (
                 <>
-                <button 
+                <p className='cartButton' 
+                    onClick={()=>setCartOpen(true)} 
+                    style={{transform: 'translate(-30px, -15px)', fontSize: '24px', fontWeight: '600'}}
+                >
+                    {getNumItems(cart)}
+                </p>
+                <img 
+                    className='cartButton'
+                    src='img/shoppingCart.png' 
+                    onClick={()=>setCartOpen(true)} 
+                    alt='shopping cart'
+                    style={{height: '40px', width: 'unset', marginRight: '10px'}} 
+                />
+                
+                {/* <button 
                     className='primaryButton cartButton'
                     onClick={()=>setCartOpen(true)}
                 >
                     View Cart
-                </button>
+                </button> */}
                 <CartCss />
                 </>
                 )

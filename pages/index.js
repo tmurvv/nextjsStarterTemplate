@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <>   
             <div className='index'>
-                <PageTitle maintitle={ branding.tabTitle } subtitle='Great Stuff to Come' />
+                <PageTitle maintitle={ branding.landingPageTitle } subtitle={ branding.landingPageSub } />
                 <IndexCss />
             </div>
         </>

@@ -1,4 +1,4 @@
-notes for commit "stripe redirect installed" -- it is working, but could not figure out how to get variable amount into build-checkout.js in the api directory. Had to hardcoed amount.
+notes for commit "stripe redirect installed" -- it is working, but could not figure out how to get variable amount into build-checkout.js in the api directory. Had to hardcode amount.
 
 
 in heroku, called nextsniptemplate

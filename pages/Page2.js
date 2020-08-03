@@ -9,11 +9,11 @@ export default function Page2() {
     return (
         <>
             <Head>
-                <title>{branding.tabTitle} - {branding.additionalPageTwo}</title>
-                <meta name="Description" content={`${branding.additionalPageTwo} Content`} key="title" />
+                <title>{branding.tabTitle} - {branding.pageTwoTitle}</title>
+                <meta name="Description" content={`${branding.pageTwoSub} Content`} key="title" />
             </Head>
             <div className='index'>
-                <PageTitle maintitle='Page Two Content' subtitle='Great Stuff to Come' />
+                <PageTitle maintitle={ branding.pageTwoTitle } subtitle={ branding.pageTwoSub } />
                 <IndexCss />
             </div>
         </>

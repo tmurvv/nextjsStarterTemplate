@@ -95,6 +95,7 @@ function CartCss() {
         .cartButton {
             float: right;
             width: fit-content;
+            cursor: pointer;
         }
         
         /*********************************************/

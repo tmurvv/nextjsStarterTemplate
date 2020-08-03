@@ -6,14 +6,15 @@ import Head from 'next/head';
 import Product from '../src/components/Product';
 import PageTitle from '../src/components/PageTitle';
 import IndexCss from '../src/styles/index.css';
+import { branding } from '../src/constants/branding';
 
 
 const Store = (props) => {
     return (
         <>
         <div className='index' style={{height: 'fit-content'}}>
-            <PageTitle maintitle="Store" subtitle='A selection of beautiful items for you' />
-            <div className="product-list" style={{display: 'flex', flexWrap: 'wrap', padding: '50px'}}>
+            <PageTitle maintitle={ branding.pageOneTitle } subtitle={ branding.pageOneSub } />
+            <div className="product-list" style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', padding: '0'}}>
                 {props.products_cds.map((product, index) => <Product product={product} key={index}/>)}
             </div>
         </div>
