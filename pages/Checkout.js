@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import uuid from 'react-uuid';
 // import fetch from "isomorphic-unfetch";
 import Router from 'next/router';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
@@ -114,21 +115,22 @@ function Checkout(props) {
             </header>
             <div className="wrapper">
                 <div className="row">
-                    <form style={{display: 'flex'}} method="get">
+                    <form style={{display: 'flex', width: '100%'}} method="get">
                         <div className="col-7 col">
                             <h3 className="topborder"><span>Shipping Details</span></h3>
-                            <div className="width50 padright">
+                            <div className="padright">
                                 <label htmlFor="fname">First Name</label>
                                 <input type="text" name="fname" value={user.fname} onChange={handleChange} id="fname" required />
                             </div>
-                            <div className="width50">
-                                <label for="lname">Last Name</label>
+                            <div>
+                                <label htmlFor="lname">Last Name</label>
                                 <input type="text" name="lname" value={user.lname} onChange={handleChange} id="lname" required />
                             </div>
-                            <label for="address">Address</label>
+                            <br />
+                            <label htmlFor="address">Address</label>
                             <input type="text" name="address" value={user.address} onChange={handleChange} id="address" required />
                             <input type="text" name="address2" value={user.address2} onChange={handleChange} id="address2" placeholder="Optional" />
-                            <label for="city">Town / City</label>
+                            <label htmlFor="city">Town / City</label>
                             <input type="text" name="city" value={user.city} onChange={handleChange} id="city" required />
                             <div className="padright">
                                 <div>
@@ -142,25 +144,26 @@ function Checkout(props) {
                                         value={user.state_prov}
                                         name='state_prov'
                                         onChange={(val) => selectRegion(val, user, setUser)} 
+                                        placeholder='select country, then state/prov/region'
                                     />
                                 </div>
                             </div>
                             <div>
-                                <label for="zip_postal">Zip/Postal Code</label>
+                                <label htmlFor="zip_postal">Zip/Postal Code</label>
                                 <input type="text" name="zip_postal" value={user.zip_postal} onChange={handleChange} id="zip_postal" placeholder="Postcode / Zip" required />
                             </div>
                             <div className="padright">
-                                <label for="email">Email Address</label>
+                                <label htmlFor="email">Email Address</label>
                                 <input type="email" name="email" value={user.email} onChange={handleChange} id="email" required />
                             </div>
                             <div>
-                                <label for="phone">Phone</label>
+                                <label htmlFor="phone">Phone</label>
                                 <input type="text" name="phone" value={user.phone} onChange={handleChange} id="phone" required />
                             </div>
                             {/* <div style={{display: 'block'}}>
                                 <h3 className="topborder"><span>Shipping Address</span></h3>
                                 <input type="checkbox" value="3" name="shippingDifferent" onChange={handleChange} checked={user.shippingDifferent} /><p>Ship to a different address?</p>
-                                <label for="notes" className="notes">Order Notes</label>
+                                <label htmlFor="notes" className="notes">Order Notes</label>
                                 <textarea name="notes" value={user.notes} onChange={handleChange} id="notes" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                             </div> */}
                         </div>
@@ -168,23 +171,25 @@ function Checkout(props) {
                             <h3 className="topborder"><span>Your Order</span></h3>
                             <div className='products'>
                                 <table style={{tableLayout: "auto", width: '100%'}}>
-                                    <tr>
-                                        <th>Qty</th>
-                                        <th>Product</th>
-                                        <th>SubTotal</th>
-                                    </tr>
-                                    {cart.map(item=>
+                                    <tbody>
                                         <tr>
-                                            <td style={{width:"10%"}}>{item.product_quantity}</td>
-                                            <td style={{width:"70%"}}>{item.description}</td>
-                                            <td style={{textAlign:'right', width:"20%"}}>${(item.product_quantity*item.price).toFixed(2)}</td>
+                                            <th>Qty</th>
+                                            <th>Product</th>
+                                            <th>SubTotal</th>
                                         </tr>
-                                    )}
+                                        {cart.map(item=>
+                                            <tr key={uuid()}>
+                                                <td style={{width:"10%"}}>{item.product_quantity}</td>
+                                                <td style={{width:"70%"}}>{item.description}</td>
+                                                <td style={{textAlign:'right', width:"20%"}}>${(item.product_quantity*item.price).toFixed(2)}</td>
+                                            </tr>
+                                        )}
+                                    </tbody>
                                 </table>
                             </div>
                             <div className="flexSB">
                                 <div className="shipping" style={{color:"black",border: 'none',paddingBottom:'-10px'}}>Shipping</div>
-                                <div style={{textAlign:'right',color: 'black',border: 'none',paddingBottom:'-10px'}}>{parseFloat(shipping(user)).toFixed(2)}</div>
+                                <div style={{textAlign:'right',color: 'black',border: 'none',paddingBottom:'-10px'}}>{isNaN(parseFloat(shipping(user)))?'$--.--':parseFloat(shipping(user)).toFixed(2)}</div>
                             </div>
                             <div className="flexSB">
                                 <div style={{color:"black",border: 'none',paddingBottom:'-10px'}}>Taxes</div>
@@ -244,11 +249,11 @@ export default Checkout;
                     <div className="col-12 col">
                         <form method="get" className="user-pswd">
                             <div className="width50 padright">
-                                <label for="username">Username or email</label>
+                                <label htmlFor="username">Username or email</label>
                                 <input type="text" name="username" id="username" required />
                             </div>
                             <div className="width50">
-                                <label for="password">Password</label>
+                                <label htmlFor="password">Password</label>
                                 <input type="password" name="password" id="password" required />
                             </div>
                                 <input type="submit" name="submit" value="Login" /><input type="checkbox" value="1" name="checkbox" /><p>Remember me</p>

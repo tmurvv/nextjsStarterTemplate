@@ -67,13 +67,20 @@ function Cart(props) {
                     
                     <button 
                         className='primaryButton'
-                        style={{marginBottom: '25px'}}
+                        style={{marginLeft: '8px', marginBottom: '25px'}}
                         onClick={()=>{setCartOpen(false);Router.push('/Checkout');}}
                     >
                         Checkout
                     </button>
-                    <form>
-                    <input type='checkbox' />This is a Gift
+                    <form style={{
+                        width: 'fit-content',
+                        paddingTop: '20px',
+                        margin: 'auto',
+                        marginLeft: '17px',
+                        boxShadow: 'none',
+                        borderRadius: 'none'
+                    }}>
+                        <input type='checkbox' />This is a Gift
                     </form>
                 </div>
                 <CartCss />
@@ -84,7 +91,7 @@ function Cart(props) {
                 <>
                 <p className='cartButton' 
                     onClick={()=>setCartOpen(true)} 
-                    style={{transform: 'translate(-30px, -15px)', fontSize: '24px', fontWeight: '600'}}
+                    style={{transform: 'translate(-23px, -11px)', fontSize: '24px', fontWeight: '600'}}
                 >
                     {getNumItems(cart)}
                 </p>
@@ -93,7 +100,6 @@ function Cart(props) {
                     src='img/shoppingCart.png' 
                     onClick={()=>setCartOpen(true)} 
                     alt='shopping cart'
-                    style={{height: '40px', width: 'unset', marginRight: '10px'}} 
                 />
                 
                 {/* <button 

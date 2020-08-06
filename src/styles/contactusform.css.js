@@ -15,9 +15,6 @@ function ContactUsFormCSS() {
                 margin-block-start: 0;
                 font-family: 'Metropolis Extra Bold';
             }
-            .findaharpLogo img {
-                height: 36px;
-            }
             .contactFormContainer {
                 border-radius: 3px;
                 padding: 20px;
@@ -148,7 +145,7 @@ function ContactUsFormCSS() {
                 box-shadow: none;
             }
             .detailButton-cancel {
-                background-color: #333333;
+                background-color: ${cssVariables.primaryColourDark};
                 margin-left: 30px;
                 color: white;
                 background-image: none;

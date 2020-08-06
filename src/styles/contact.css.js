@@ -73,6 +73,16 @@ function ContactCSS() {
             .imgContainer img {
                 width: 180px;
             }
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+                height: 80px;
+                width: 280px;
+                margin: 25px auto 0;
+            }
+            .buttons>button {
+                height: 30px;
+            }
             .about {
                 padding: 10px 20px 30px ;
                 max-width: 1300px;

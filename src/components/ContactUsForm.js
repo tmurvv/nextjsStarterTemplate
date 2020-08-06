@@ -73,13 +73,13 @@ function ContactUsForm() {
             lastname: user.lastname,
             email: user.contactemail,
             comments: user.contactcomments,
-            selleremail: 'tisha@findaharp.com',
+            selleremail: 'tech@take2tech.ca',
             newsletter: user.newsletter
         }
         try {
             // send contactUs inq
             const res = await axios.post(`${process.env.backend}/api/v1/contactform`, contact);
-            resultText.innerText=`Contact form has been sent to findaharp.com.`;
+            resultText.innerText=`Contact form has been sent to this site administrator.`;
             dispatchResultInfo({type: 'OK'});
         } catch(e) {
             resultText.innerText=`Something went wrong. Please try again or send an email to harps@findaharp.com. ${e.message}`;
@@ -161,23 +161,22 @@ function ContactUsForm() {
                             rows='6'
                         />
                     </div>   
-                    <div style={{marginBottom: '-15px', marginTop:'25px'}}>
+                    <div style={{marginBottom: '-15px', marginTop:'25px', marginLeft: '98px', display: 'flex', justifyContent: 'flex-start'}}>
                         <input 
                             id={uuid()}
                             type='checkbox'
                             name='newsletter'
                             onChange={handleChange}
-                            style={{marginLeft: '0'}}
+                            style={{marginLeft: '0', flex: '1', transform: 'translate(2.5px,5px'}}
                             checked={user.newsletter}
                         />
-                        <label style={{marginLeft: '5px'}} name='contactcomments'>Signup for our newsletter?<br />Fun talk about site is coming your way!! </label>
+                        <label style={{marginLeft: '5px', flex: '19', textAlign: 'left'}} name='contactcomments'>Signup for our newsletter?<br />Fun talk about site is coming your way!! </label>
                     </div>      
                     <div className='buttons'>
                         <button
                             className='detailButton'
                             type='submit'
                             onClick={handleSubmit} 
-                            style={{marginBottom: '0'}}
                         >Submit
                         </button>
                         <button

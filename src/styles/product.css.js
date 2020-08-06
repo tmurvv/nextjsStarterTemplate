@@ -15,6 +15,7 @@ function ProductCss() {
                 overflow-y: auto;
                 text-align: justify;
                 margin-bottom: 25px;
+                padding-right: 5px;
             }
             .product__image {
                 height: 265px;

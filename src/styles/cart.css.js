@@ -94,8 +94,9 @@ function CartCss() {
         }
         .cartButton {
             float: right;
-            width: fit-content;
             cursor: pointer;
+            height: 45px;
+            width: unset;
         }
         
         /*********************************************/
@@ -138,7 +139,7 @@ function CartCss() {
         
         .description h1 {
             font-size: 14px; 
-            color: #e74c3c
+            color: ${cssVariables.primaryColour}
         }
         
         .description h2 {

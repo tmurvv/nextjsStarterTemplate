@@ -12,7 +12,7 @@ function Contact() {
     return (
         <>
         <Head>
-            <title>findaharp.com -- Contact Us</title>
+            <title>My Site -- Contact Us</title>
             <meta name="Description" content="Contact Us -- Lever Harps, Pedal Harps, Wire Harps, Celtic Harps, Irish Harps, Folk Harps" key="title" />
         </Head>
         <div className='contactContainer'>
