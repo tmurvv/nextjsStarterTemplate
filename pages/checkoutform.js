@@ -23,7 +23,7 @@ export default function CheckoutForm() {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         window
-        .fetch(`https://findaharp-api-testing.herokuapp.com/api/v1/create-stripe-payment-intent`, {
+        .fetch(`http://localhost:3006/api/v1/create-stripe-payment-intent`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -82,7 +82,7 @@ function ContactUsForm() {
             resultText.innerText=`Contact form has been sent to this site administrator.`;
             dispatchResultInfo({type: 'OK'});
         } catch(e) {
-            resultText.innerText=`Something went wrong. Please try again or send an email to harps@findaharp.com. ${e.message}`;
+            resultText.innerText=`Something went wrong. Please check your network connection.`;
             dispatchResultInfo({type: 'tryAgain'});
         }  
         clearForm();
@@ -91,7 +91,7 @@ function ContactUsForm() {
         document.querySelector('#loadingLoginText').innerText='';
         dispatchResultInfo({type: 'initial'});
     }
-   return (
+    return (
         <>  
             <div className='contactFormContainer'> 
                 <div className={`contactArea`}>
